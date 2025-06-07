@@ -1,6 +1,6 @@
 ---
 
-# CursoWEBUTD
+# CursoWebUTD
 
 Este repositório é um compilado de materiais e projetos desenvolvidos durante o curso **"CursoWEBUTD"**, focado no aprendizado e aprimoramento em desenvolvimento web. Ele está organizado em duas seções principais para facilitar a navegação e o estudo.
 
