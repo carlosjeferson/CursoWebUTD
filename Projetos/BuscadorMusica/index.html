@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Letras de Música</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class="container">
+        <h1>Buscador de Letras de Música</h1>
+        <p>Bem-vindo ao nosso buscador de letras! Encontre a letra da sua música favorita digitando o nome da banda ou artista e o título da canção nos campos abaixo.</p>
+
+        <div class="search-form">
+            <input type="text" id="artistInput" placeholder="Nome da Banda/Artista" aria-label="Nome da Banda ou Artista" required>
+            <input type="text" id="titleInput" placeholder="Título da Música" aria-label="Título da Música" required>
+            <button id="searchButton">Buscar Letra</button>
+        </div>
+
+        <div id="lyricsResult">
+            </div>
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>

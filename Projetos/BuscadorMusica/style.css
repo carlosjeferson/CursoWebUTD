@@ -1,0 +1,176 @@
+:root {
+    --bg-color: #1a1a1a; /* Fundo escuro */
+    --container-bg: #2b2b2b; /* Fundo do container ligeiramente mais claro */
+    --text-color: #e0e0e0; /* Cor do texto claro */
+    --input-bg: #3c3c3c; /* Fundo dos inputs */
+    --input-border: #555; /* Borda dos inputs */
+    --input-focus-border: #8a2be2; /* Roxo para a borda de foco animada */
+    --button-bg: #8a2be2; /* Roxo para o botão */
+    --button-hover-bg: #6a1aae; /* Roxo mais escuro no hover */
+    --lyrics-bg: #363636; /* Fundo da área da letra */
+    --lyrics-border: #444; /* Borda da área da letra */
+    --error-color: #ff6b6b; /* Cor para mensagens de erro */
+    --scrollbar-width: 8px;
+    --scrollbar-track-color: #2b2b2b;
+    --scrollbar-thumb-color: #8a2be2; /* Roxo para o polegar da scrollbar */
+    --scrollbar-thumb-hover-color: #6a1aae; /* Roxo mais escuro no hover */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-color);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-color);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-track-color);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-color);
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 100%;
+    max-width: 650px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 2.2em;
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.search-form input[type="text"] {
+    padding: 14px 18px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 17px;
+    width: calc(100% - 36px);
+    background-color: var(--input-bg);
+    color: var(--text-color); /* Cor padrão do texto no input */
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Adicionada transição para 'color' */
+}
+
+.search-form input[type="text"]:focus {
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3); /* Cor da sombra baseada no roxo */
+}
+
+.search-form input[type="text"]:not(:placeholder-shown) {
+    color: var(--input-focus-border);
+}
+
+.search-form button {
+    padding: 14px 30px;
+    background-color: var(--button-bg); /* Roxo */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: fit-content;
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+}
+
+.search-form button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#lyricsResult {
+    background-color: var(--lyrics-bg);
+    border: 1px solid var(--lyrics-border);
+    border-radius: 10px;
+    padding: 25px;
+    min-height: 180px;
+    text-align: left;
+    color: var(--text-color);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+    max-height: 450px;
+    font-size: 1em;
+    line-height: 1.8;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#lyricsResult::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+#lyricsResult::-webkit-scrollbar-track {
+    background: var(--lyrics-bg);
+    border-radius: 10px;
+}
+
+#lyricsResult::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+    border-radius: 10px;
+    border: 2px solid var(--lyrics-bg);
+}
+
+#lyricsResult::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-color);
+}
+
+#lyricsResult p {
+    color: var(--text-color);
+    margin: 0;
+    font-style: italic;
+}
+
+#lyricsResult p.error-message {
+    color: var(--error-color);
+    font-weight: bold;
+    font-style: normal;
+}
