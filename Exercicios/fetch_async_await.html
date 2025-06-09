@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Praticando Fetch com Async e Await</h1>
+    <h2 id="pokemonName">Carregando...</h2>
+    <img id="pokemonImg" src="" alt="">
+    <img id="pokemonImgHd" src="" alt="">
+
+    <script>
+        async function carregarPokemon(id){
+            try{
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                const json = await response.json();
+    
+                const pokemonName = document.getElementById('pokemonName');
+                let pokemonNameStr = json.name;
+                pokemonNameStr = pokemonNameStr.charAt(0).toUpperCase() + pokemonNameStr.slice(1);
+                pokemonName.innerHTML = pokemonNameStr;
+    
+                const pokemonImg = document.getElementById('pokemonImg');
+                const pokemonImgHd = document.getElementById('pokemonImgHd');
+                pokemonImg.src = json.sprites.front_default;
+                pokemonImgHd.src = json.sprites.other.dream_world.front_default;
+    
+                console.log(json)
+            }catch ( error ){
+                console.log(error);
+                const pokemonName = document.getElementById('pokemonName');
+                pokemonName.innerHTML = "Falha ao carregar!"
+
+            }
+            
+        }
+        carregarPokemon(1)
+    </script>
+</body>
+</html>

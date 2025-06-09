@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Praticando Fetch com Async e Await</h1>
+    <h2 id="pokemonName">Carregando...</h2>
+    <img id="pokemonImg" src="" alt="">
+    <img id="pokemonImgHd" src="" alt="">
+
+    <script>
+        async function carregarPokemon(id){
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+            const pokemonName = document.getElementById('pokemonName');
+            let pokemonNameStr = response.data.name;
+            pokemonNameStr = pokemonNameStr.charAt(0).toUpperCase() + pokemonNameStr.slice(1);
+            pokemonName.innerHTML = pokemonNameStr;
+
+            const pokemonImg = document.getElementById('pokemonImg');
+            const pokemonImgHd = document.getElementById('pokemonImgHd');
+            pokemonImg.src = response.data.sprites.front_default;
+            pokemonImgHd.src = response.data.sprites.other.dream_world.front_default;
+
+            console.log(response)      
+        }
+        carregarPokemon(10)
+    </script>
+</body>
+</html>
